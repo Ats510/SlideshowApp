@@ -86,8 +86,10 @@ class ViewController: UIViewController {
     // 画像をタップすると画面遷移する
     @IBAction func tapOn(_ sender: Any) {
         performSegue(withIdentifier: "toZoomViewController", sender: nil)
-        self.timer.invalidate()
-        self.timer = nil
+        if self.timer != nil {
+            self.timer.invalidate()
+            self.timer = nil
+        }
         startStop.setTitle("再生", for: .normal)
         self.nextbutton.isEnabled = true
         self.backbutton.isEnabled = true
