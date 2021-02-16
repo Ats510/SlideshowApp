@@ -66,7 +66,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backbutton" destination="ajB-3J-5VS" id="YpG-pM-lge"/>
                         <outlet property="imageView" destination="dJe-rE-iAc" id="ZrH-CD-4fN"/>
+                        <outlet property="nextbutton" destination="tcB-xD-Hwx" id="R8U-QN-xOr"/>
                         <outlet property="startStop" destination="vZQ-dB-U8h" id="pxU-xJ-2YR"/>
                         <segue destination="C04-it-1tF" kind="show" identifier="toZoomViewController" id="0Dw-Z5-3Wi"/>
                     </connections>

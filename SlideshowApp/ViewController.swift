@@ -10,6 +10,9 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet weak var startStop: UIButton!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var nextbutton: UIButton!
+    @IBOutlet weak var backbutton: UIButton!
+    
     
     var imageindex = 0
     var timer: Timer!
@@ -59,10 +62,14 @@ class ViewController: UIViewController {
         if self.timer == nil {
             self.timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(updateImage(_:)), userInfo: nil, repeats: true)
             startStop.setTitle("停止", for: .normal)
+            self.nextbutton.isEnabled = false
+            self.backbutton.isEnabled = false
         } else {
             self.timer.invalidate()
             self.timer = nil
             startStop.setTitle("再生", for: .normal)
+            self.nextbutton.isEnabled = true
+            self.backbutton.isEnabled = true
         }
     }
     
@@ -79,6 +86,11 @@ class ViewController: UIViewController {
     // 画像をタップすると画面遷移する
     @IBAction func tapOn(_ sender: Any) {
         performSegue(withIdentifier: "toZoomViewController", sender: nil)
+        self.timer.invalidate()
+        self.timer = nil
+        startStop.setTitle("再生", for: .normal)
+        self.nextbutton.isEnabled = true
+        self.backbutton.isEnabled = true
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
         if (segue.identifier == "toZoomViewController") {
